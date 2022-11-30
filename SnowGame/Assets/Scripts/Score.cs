@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Score : MonoBehaviour
 {
     [SerializeField] private Transform player;
@@ -11,15 +12,11 @@ public class Score : MonoBehaviour
     [SerializeField] private GameObject DiePanel;
 
     float score;
-    
-    
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         scoreText.text = "Points : " + ((int)player.position.z / 2).ToString();
@@ -27,9 +24,8 @@ public class Score : MonoBehaviour
 
     public void Restart()
     {
-        DiePanel.SetActive(false);
         Time.timeScale = 1;
-
+        SceneManager.LoadScene(0);
     }
     public void Die()
     {

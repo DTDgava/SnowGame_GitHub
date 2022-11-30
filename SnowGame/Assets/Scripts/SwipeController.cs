@@ -71,7 +71,7 @@ public class SwipeController : MonoBehaviour
             {
                 if(y<0)
                 {
-                    swipeLeft = true;
+                    swipeDown = true;
                 }
                 else
                 {

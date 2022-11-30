@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Score scoreScrpt;
     [SerializeField] private int coins;
+
+    private CapsuleCollider col;
     
     private int LineToMove = 1;
     public float LineDistance = 4;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        col = GetComponent<CapsuleCollider>();
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         StartCoroutine(speedIncrease());
@@ -57,6 +60,10 @@ public class PlayerController : MonoBehaviour
             {
                 Jump();
             }
+        }
+        if(SwipeController.swipeDown)
+        {
+            StartCoroutine(Slide());
         }
 
         if(controller.isGrounded)
@@ -117,5 +124,16 @@ public class PlayerController : MonoBehaviour
             coins++;
             PresentText.text = "You have collected " + coins + " gifts";
         }
+    }
+    private IEnumerator Slide()
+    {
+        col.center = new Vector3(0,-0.5f,0);
+        col.height = 1f;
+        anim.SetTrigger("Sliding");
+
+        yield return new WaitForSeconds(1);
+
+        col.center = new Vector3(0, 0, 0);
+        col.height = 2f;
     }
 }
