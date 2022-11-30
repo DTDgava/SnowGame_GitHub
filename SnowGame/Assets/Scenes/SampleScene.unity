@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.05
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
-  - {fileID: 6598723463979474659, guid: 8d512a451aa7ac8448fdb5abe2dea7b4, type: 3}
+  - {fileID: 8607845385422278995, guid: 8d512a451aa7ac8448fdb5abe2dea7b4, type: 3}
   - {fileID: 6791820275258354762, guid: b90afac7827beb648be41513c7db9979, type: 3}
   player: {fileID: 1880919398}
 --- !u!4 &749922511
