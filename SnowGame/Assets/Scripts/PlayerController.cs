@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         }
         if(SwipeController.swipeUp)
         {
+            gravity = -20;
             if (controller.isGrounded)
             {
                 Jump();
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
         }
         if(SwipeController.swipeDown)
         {
+            gravity = -50;
             StartCoroutine(Slide());
         }
 
@@ -109,11 +111,12 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator speedIncrease()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(2);
         if (speed < maxSpeed)
         {
-            speed += 0.3f;
+            speed += 5;
             StartCoroutine(speedIncrease());
+            anim.SetFloat("Speed", speed);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -129,11 +132,16 @@ public class PlayerController : MonoBehaviour
     {
         col.center = new Vector3(0,-0.5f,0);
         col.height = 1f;
+        controller.center = new Vector3(0, -0.5f, 0);
+        controller.height = 1f;
         anim.SetTrigger("Sliding");
-
         yield return new WaitForSeconds(1);
 
         col.center = new Vector3(0, 0, 0);
         col.height = 2f;
+        controller.center = new Vector3(0, 0, 0);
+        controller.height = 2f;
+        anim.ResetTrigger("Sliding");
     }
+  
 }
