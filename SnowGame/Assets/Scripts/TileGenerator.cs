@@ -10,7 +10,7 @@ public class TileGenerator : MonoBehaviour
     private float tileLenght = 180;
 
     [SerializeField] private Transform player;
-    private int startTiles = 1;
+    private int startTiles = 2;
 
     private void Start()
     {

@@ -128,6 +128,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             presents += presentScore;
             PresentText.text = presents.ToString();
+            PlayerPrefs.SetInt("presents", PlayerPrefs.GetInt("presents") + presentScore);
         }
 
         if(other.tag == "BonusStar")

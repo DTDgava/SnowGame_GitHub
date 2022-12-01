@@ -21,7 +21,7 @@ public class Score : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Game");
     }
     public void Die()
     {
@@ -29,6 +29,8 @@ public class Score : MonoBehaviour
         DiePanel.SetActive(true);
         DieScoreText.text = "You score :" + score;
         Time.timeScale = 0;
+        int LastRunScore = int.Parse(scoreText.text.ToString());
+        PlayerPrefs.SetInt("lastRunScore",LastRunScore);
 
     }
 }
