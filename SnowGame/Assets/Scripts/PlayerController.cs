@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(2);
         if (speed < maxSpeed)
         {
-            speed += 5;
+            speed += 1;
             StartCoroutine(speedIncrease());
             anim.SetFloat("Speed", speed);
         }
@@ -128,12 +128,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             coins++;
-            PresentText.text = "You have collected " + coins + " gifts";
-        }
-        else if (other.tag == "Multiplier")
-        {
-            Destroy(other.gameObject);
-            BonusScrpt.Multiplier();     
+            PresentText.text = coins.ToString();
         }
     }
     private IEnumerator Slide()
