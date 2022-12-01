@@ -10,7 +10,7 @@ public class TileGenerator : MonoBehaviour
     private float tileLenght = 180;
 
     [SerializeField] private Transform player;
-    private int startTiles = 3;
+    private int startTiles = 1;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class TileGenerator : MonoBehaviour
     }
     private void Update()
     {
-        if (player.position.z - 130 > spawnPos - (startTiles * tileLenght))
+        if (player.position.z - 50 > spawnPos - (startTiles * tileLenght))
         {
             SpawnTile(Random.Range(0, tilePrefabs.Length-1));
             DeleteTile();

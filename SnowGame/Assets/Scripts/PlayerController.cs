@@ -25,8 +25,11 @@ public class PlayerController : MonoBehaviour
 
     public Text PresentText;
 
+    private Bonus BonusScrpt;
+
     void Start()
     {
+        BonusScrpt = GetComponent<Bonus>();
         col = GetComponent<CapsuleCollider>();
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
@@ -126,6 +129,11 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             coins++;
             PresentText.text = "You have collected " + coins + " gifts";
+        }
+        else if (other.tag == "Multiplier")
+        {
+            Destroy(other.gameObject);
+            BonusScrpt.Multiplier();     
         }
     }
     private IEnumerator Slide()

@@ -12,6 +12,8 @@ public class Score : MonoBehaviour
     [SerializeField] private GameObject DiePanel;
 
     float score;
+
+    public static float Multiplier;
     void Start()
     {
         
@@ -19,7 +21,7 @@ public class Score : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = "Points : " + ((int)player.position.z / 2).ToString();
+        scoreText.text = "Points : " + ((int)player.position.z / 2 * Multiplier).ToString();
     }
 
     public void Restart()
@@ -30,7 +32,7 @@ public class Score : MonoBehaviour
     public void Die()
     {
         DiePanel.SetActive(true);
-        score = ((int)player.position.z / 2);
+        score = ((int)player.position.z / 2 * Multiplier);
         DieScoreText.text = "You score :" + score;
         Time.timeScale = 0;
 
