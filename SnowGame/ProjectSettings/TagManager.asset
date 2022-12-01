@@ -8,6 +8,8 @@ TagManager:
   - Present
   - FxTemporaire
   - Multiplier
+  - BonusStar
+  - JumpBonus
   layers:
   - Default
   - TransparentFX

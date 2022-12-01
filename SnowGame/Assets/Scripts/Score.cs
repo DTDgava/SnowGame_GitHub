@@ -11,11 +11,7 @@ public class Score : MonoBehaviour
     [SerializeField] private Text DieScoreText;
     [SerializeField] private GameObject DiePanel;
 
-    float score;
-    void Start()
-    {
-        
-    }
+    public float score;
 
     void Update()
     {

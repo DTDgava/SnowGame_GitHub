@@ -8,11 +8,11 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 dir;
     [SerializeField] private float speed;
-    [SerializeField] private float JumpForce;
     [SerializeField] private float gravity;
-
     [SerializeField] private Score scoreScrpt;
-    [SerializeField] private int coins;
+    [SerializeField] private int presents;
+    public static int presentScore = 1;
+    public static float JumpForce = 10;
 
     private CapsuleCollider col;
     
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         }
         if(SwipeController.swipeDown)
         {
-            gravity = -50;
+            gravity = -100;
             StartCoroutine(Slide());
         }
 
@@ -108,7 +108,6 @@ public class PlayerController : MonoBehaviour
     {
         if(hit.gameObject.tag == "Obstacle")
         {
-            
             scoreScrpt.Die();
         }
     }
@@ -127,8 +126,22 @@ public class PlayerController : MonoBehaviour
         if(other.tag == "Present")
         {
             Destroy(other.gameObject);
-            coins++;
-            PresentText.text = coins.ToString();
+            presents += presentScore;
+            PresentText.text = presents.ToString();
+        }
+
+        if(other.tag == "BonusStar")
+        {
+            presentScore += 2;
+            BonusScrpt.BonusStar();
+            Destroy(other.gameObject);
+        }
+
+        if(other.tag == "JumpBonus")
+        {
+            JumpForce = 14;
+            BonusScrpt.JumpBonus();
+            Destroy(other.gameObject);
         }
     }
     private IEnumerator Slide()
