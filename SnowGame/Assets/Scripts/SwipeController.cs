@@ -8,6 +8,7 @@ public class SwipeController : MonoBehaviour
     private bool isDraging = false;
     private Vector2 startTouch, swipeDelta;
 
+    public GameObject Camera;
     private void Update()
     {
         tap = swipeDown = swipeUp = swipeLeft = swipeRight = false;
@@ -61,10 +62,12 @@ public class SwipeController : MonoBehaviour
                 if(x<0)
                 {
                     swipeLeft = true;
+                    
                 }
                 else
                 {
                     swipeRight = true;
+                    
                 }
             }
             else

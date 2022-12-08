@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private CapsuleCollider col;
     
-    private int LineToMove = 1;
+    public static int LineToMove = 1;
     public float LineDistance = 4;
 
     const float maxSpeed = 40;
