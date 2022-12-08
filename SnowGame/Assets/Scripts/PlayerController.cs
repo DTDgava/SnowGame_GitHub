@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     private Bonus BonusScrpt;
 
+    public ParticleSystem BoomParticle;
+
     void Start()
     {
         BonusScrpt = GetComponent<Bonus>();
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
             if(LineToMove < 2)
             {
                 LineToMove++;
+                
             }
         }
         if(SwipeController.swipeLeft)
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour
             if(LineToMove > 0)
             {
                 LineToMove--;
+                
             }
         }
         if(SwipeController.swipeUp)
@@ -129,6 +133,7 @@ public class PlayerController : MonoBehaviour
             presents += presentScore;
             PresentText.text = presents.ToString();
             PlayerPrefs.SetInt("presents", PlayerPrefs.GetInt("presents") + presentScore);
+            BoomParticle.Play();
         }
 
         if(other.tag == "BonusStar")
@@ -136,6 +141,7 @@ public class PlayerController : MonoBehaviour
             presentScore += 2;
             BonusScrpt.BonusStar();
             Destroy(other.gameObject);
+            BoomParticle.Play();
         }
 
         if(other.tag == "JumpBonus")
@@ -143,6 +149,7 @@ public class PlayerController : MonoBehaviour
             JumpForce = 14;
             BonusScrpt.JumpBonus();
             Destroy(other.gameObject);
+            BoomParticle.Play();
         }
     }
     private IEnumerator Slide()

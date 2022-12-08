@@ -8,7 +8,6 @@ public class SwipeController : MonoBehaviour
     private bool isDraging = false;
     private Vector2 startTouch, swipeDelta;
 
-    public GameObject Camera;
     private void Update()
     {
         tap = swipeDown = swipeUp = swipeLeft = swipeRight = false;
